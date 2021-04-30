@@ -3,7 +3,12 @@
     <vs-col class="col box" w="4">
       <div class="pt-4 pb-4">
         <div class="pl-2 pr-2 mb-3">
-         <div class="d-flex "><h5 class="mr-1">Мои сайты</h5> <i class='bx bx-info-circle cursor-pointer' @click="isShowInfo=!isShowInfo"></i></div>
+          <!-- <i class='bx bx-info-circle cursor-pointer' @click="isShowInfo=!isShowInfo"></i> -->
+         <div class="d-flex">
+          <h5 class="mr-1">Мои сайты</h5>
+          <i v-if="isShowInfo" class='bx bx-chevron-down cursor-pointer' @click="isShowInfo=!isShowInfo"></i>
+          <i v-else class='bx bx-chevron-up cursor-pointer' @click="isShowInfo=!isShowInfo"></i>
+         </div>
           <vs-alert border closable v-model="isShowInfo">
             <template #title>
               Rijet CORS

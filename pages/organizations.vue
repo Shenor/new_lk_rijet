@@ -2,8 +2,13 @@
   <div>
     <vs-card>
       <template #title>
-        <div class="mb-2"><h3 class="mr-1">Goyda228</h3>
-        <small>fb3a6916-b548-11ea-aa5c-0025906bfe47</small>
+        <div class="mb-2"><h3 class="mr-1 mb-1">Goyda228</h3>
+        <vs-tooltip shadow top not-hover v-model="isActiveCopyTooltip" class="w-0">
+          <small class="mr-2 copy" @click="copy('fb3a6916-b548-11ea-aa5c-0025906bfe47')" title="Копировать">fb3a6916-b548-11ea-aa5c-0025906bfe47</small>
+          <template #tooltip>
+            Скопированно <i class='bx bx-check' style='color:#46c93a'></i>
+          </template>
+        </vs-tooltip>
       </div>
       </template>
       <template #img>
@@ -13,7 +18,7 @@
         <p class="mb-1">Товаров: 5</p>
         <p class="mb-2">Категорий: 6</p>
         <small><p>Дата выгрузки номенклатуры: 2020-09-18 16:04:18</p></small>
-        <vs-button block class="mt-3">Подробнее</vs-button>
+        <NuxtLink to='/organizations/fb3a6916-b548-11ea-aa5c-0025906bfe47'><vs-button block class="mt-3">Подробнее</vs-button></NuxtLink>
       </template>
       <template #interactions>
         <vs-tooltip shadow>
@@ -31,10 +36,28 @@
 
 <script>
 export default {
-
+  data(){
+    return{
+      isActiveCopyTooltip: false
+    }
+  },
+  methods:{
+    copy(id){
+      console.log(navigator);
+      console.log(navigator.clipboard);
+      if(!navigator) return false;
+      navigator.clipboard.writeText(id);
+      this.isActiveCopyTooltip = !this.isActiveCopyTooltip
+    }
+  }
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.copy{
+  padding: .15rem;
+  cursor: pointer;
+  border-radius: 3px;
+  background: whitesmoke;
+}
 </style>
