@@ -63,9 +63,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.bg{
-
-}
 .wrapper {
   display: grid;
   place-items: center;
